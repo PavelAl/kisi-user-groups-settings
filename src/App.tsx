@@ -1,7 +1,9 @@
-import { useState } from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import { HelloVite } from "~components/HelloVite";
+import { useState } from 'react';
+
+import { HelloVite } from '~/components/HelloVite';
+
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -12,7 +14,10 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <HelloVite />
         <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
+          <button
+            type="button"
+            onClick={() => setCount(prevState => prevState + 1)}
+          >
             count is: {count}
           </button>
         </p>
@@ -28,7 +33,7 @@ function App() {
           >
             Learn React
           </a>
-          {" | "}
+          {' | '}
           <a
             className="App-link"
             href="https://vitejs.dev/guide/features.html"

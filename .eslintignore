@@ -1,0 +1,9 @@
+/node_modules/
+/config/
+/src/services/i18n/locales/*.ts
+/jest/
+
+package-lock.json
+jest.config.js
+postcss.config.js
+webpack.*

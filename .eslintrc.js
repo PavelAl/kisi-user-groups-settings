@@ -1,61 +1,32 @@
 module.exports = {
   root: true,
-  plugins: ['import', 'prettier'],
+  plugins: ['import', 'prettier', 'react'],
   extends: ['airbnb-typescript/base'],
   parserOptions: {
-    project: './tsconfig.eslint.json'
-    // sourceType: 'module',
-    // ecmaVersion: 2020,
-    // ecmaFeatures: {
-    //   jsx: true
-    // }
+    project: './tsconfig.eslint.json',
   },
   rules: {
     'comma-dangle': 'off',
     '@typescript-eslint/comma-dangle': ['off'],
-    'import/extensions': ['error', 'ignorePackages', { '': 'never' }],
+    'react/jsx-newline': ['error', { prevent: false }],
+    'import/extensions': ['error', 'never'],
     'import/order': [
       'error',
       {
         'newlines-between': 'always',
-        groups: [
-          'builtin',
-          'external',
-          'internal',
-          'parent',
-          'sibling',
-          'index',
-          'object',
-          'type'
-        ],
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling'],
         pathGroups: [
           {
             pattern: '~/**',
             group: 'sibling',
-            position: 'before'
-          }
+            position: 'before',
+          },
         ],
         alphabetize: {
           order: 'asc',
-          caseInsensitive: true
-        }
-      }
-    ]
-  }
-  // root: true,
-  // parser: "@typescript-eslint/parser",
-  // plugins: ["@typescript-eslint"],
-  // extends: [
-  //   "eslint:recommended",
-  //   "plugin:@typescript-eslint/recommended",
-  //   "plugin:react/recommended",
-  //   "react"
-  // ],
-  // parserOptions: {
-  //   sourceType: "module",
-  //   ecmaVersion: 2020,
-  //   ecmaFeatures: {
-  //     jsx: true
-  //   }
-  // },
+          caseInsensitive: true,
+        },
+      },
+    ],
+  },
 };

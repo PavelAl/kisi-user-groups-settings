@@ -7,14 +7,14 @@ module.exports = {
   },
   rules: {
     'comma-dangle': 'off',
-    '@typescript-eslint/comma-dangle': ['off'],
+    '@typescript-eslint/comma-dangle': 'off',
     'react/jsx-newline': [
       'error',
       {
         prevent: false,
       },
     ],
-    'import/extensions': ['error', 'never'],
+    'import/extensions': 'off',
     'import/order': [
       'error',
       {

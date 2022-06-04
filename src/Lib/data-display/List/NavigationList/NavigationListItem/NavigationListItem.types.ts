@@ -1,7 +1,7 @@
-import { ListItemButtonProps } from '@mui/material';
+import { ListItemProps } from '@mui/material';
 
 import { ListOption } from '../../List.types';
 
-export interface NavigationListItemProps extends ListItemButtonProps {
+export interface NavigationListItemProps extends ListItemProps {
     option: ListOption;
 }

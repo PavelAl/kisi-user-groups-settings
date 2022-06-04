@@ -28,7 +28,7 @@ const NavigationListStory: React.FC<Args> = ({
         );
     }, [withIcons, withSecondaryElement]);
 
-    return <NavigationList options={options} />;
+    return <NavigationList options={options} onItemSelected={console.log} />;
 };
 
 export const Default: Story<Args> = args => {

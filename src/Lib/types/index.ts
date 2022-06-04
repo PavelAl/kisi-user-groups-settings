@@ -1,2 +1,2 @@
-export * from './MaterialSVGIconElement';
 export * from './Option';
+export * from './SVGIcon';

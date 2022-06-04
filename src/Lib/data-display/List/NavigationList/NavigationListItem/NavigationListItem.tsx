@@ -14,11 +14,12 @@ export const NavigationListItem = forwardRef<
 
     return (
         <ListItem
-            ref={ref}
             secondaryAction={secondaryElement}
             disablePadding={Boolean(secondaryElement)}
+            {...listItemProps}
+            ref={ref as any}
         >
-            <ListItemButton role={undefined} {...listItemProps}>
+            <ListItemButton>
                 <ListItemContent {...option} />
             </ListItemButton>
         </ListItem>

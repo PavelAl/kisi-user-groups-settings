@@ -4,15 +4,15 @@ import { FC, PropsWithChildren } from 'react';
 import { LoginStatus } from '../Login.types';
 
 interface Props {
-  loginHook: () => LoginStatus;
+    loginHook: () => LoginStatus;
 }
 
 export const LoginContainer: FC<PropsWithChildren<Props>> = ({
-  loginHook,
-  children,
+    loginHook,
+    children
 }) => {
-  const loginStatus: LoginStatus = loginHook();
+    const loginStatus: LoginStatus = loginHook();
 
-  if (loginStatus) return <>{children}</>;
-  else return <CircularProgress />;
+    if (loginStatus) return <>{children}</>;
+    else return <CircularProgress />;
 };

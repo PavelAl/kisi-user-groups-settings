@@ -7,13 +7,13 @@ import App from './App';
 import './index.css';
 
 export const muiCache = createCache({
-  key: 'mui',
-  prepend: true,
+    key: 'mui',
+    prepend: true
 });
 export const theme = createTheme();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>
 );

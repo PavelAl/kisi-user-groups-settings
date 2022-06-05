@@ -1,38 +1,23 @@
-import React, { useCallback, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
-import { groupToListOption } from '~/Groups/mappers/groupToListOption';
-import { ListOption } from '~/Lib/data-display/List/List.types';
+import { useGroupsOptions } from '~/Groups/hooks';
 import { NavigationList } from '~/Lib/data-display/List/NavigationList/NavigationList';
-import { appUrls } from '~/services/urls';
 
 import { useGroupsPageStyles } from './GroupsPage.styles';
 import { GroupsPageProps } from './GroupsPage.types';
 
 export const GroupsPage: React.FC<GroupsPageProps> = props => {
-    const { useGroups } = props;
+  const { useGroups, useGroupSelected } = props;
 
-    const groups = useGroups();
+  const groups = useGroups();
+  const onGroupSelected = useGroupSelected();
 
-    const groupsOptions = useMemo(
-        () => groups.map(groupToListOption),
-        [groups]
-    );
+  const { groupsOptions, handleGroupSelect } = useGroupsOptions({
+    groups,
+    onGroupSelected
+  });
 
-    const navigate = useNavigate();
+  const { classes } = useGroupsPageStyles();
 
-    const handleGroupSelect = useCallback((groupOption?: ListOption) => {
-        navigate(`${appUrls.groups}/${groupOption?.key}`);
-    }, []);
-
-    const { classes } = useGroupsPageStyles();
-
-    return (
-        <div className={classes.root}>
-            <NavigationList
-                options={groupsOptions}
-                onItemSelected={handleGroupSelect}
-            />
-        </div>
-    );
+  return <NavigationList options={groupsOptions} className={classes.root} onItemSelected={handleGroupSelect} />;
 };

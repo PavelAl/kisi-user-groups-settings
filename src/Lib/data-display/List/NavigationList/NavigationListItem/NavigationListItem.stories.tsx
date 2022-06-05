@@ -6,27 +6,27 @@ import { createTestListOption, configOption } from '../../storybook';
 
 import { NavigationListItem } from './NavigationListItem';
 export default {
-    title: 'Lib/Data Display/List/NavigationList/NavigationListItem'
+  title: 'Lib/Data Display/List/NavigationList/NavigationListItem'
 } as Meta;
 
 interface Args {
-    withIcon: boolean;
-    withSecondaryElement: boolean;
+  withIcon: boolean;
+  withSecondaryElement: boolean;
 }
 
 const testOption: ListOption = createTestListOption(0);
 
 const NavigationListItemStory = ({ withIcon, withSecondaryElement }: Args) => {
-    const option = useMemo(
-        () => configOption(testOption, withIcon, withSecondaryElement),
-        [withIcon, withSecondaryElement]
-    );
+  const option = useMemo(
+    () => configOption(testOption, withIcon, withSecondaryElement),
+    [withIcon, withSecondaryElement]
+  );
 
-    return <NavigationListItem option={option} />;
+  return <NavigationListItem option={option} />;
 };
 
 export const Default: Story<Args> = args => {
-    return <NavigationListItemStory {...args} />;
+  return <NavigationListItemStory {...args} />;
 };
 
 Default.args = { withIcon: false, withSecondaryElement: false };

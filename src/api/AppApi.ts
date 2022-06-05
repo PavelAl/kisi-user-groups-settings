@@ -8,7 +8,7 @@ export const AppApiContext = createContext<AppApi>(kisiAppApi);
 export const AppApiProvider = AppApiContext.Provider;
 
 export const useAppApi = () => {
-    const appApi = useContext(AppApiContext);
+  const appApi = useContext(AppApiContext);
 
-    return appApi;
+  return appApi;
 };

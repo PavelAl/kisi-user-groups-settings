@@ -4,13 +4,13 @@ import React from 'react';
 import { GroupsPage } from './GroupsPage';
 
 export default {
-    title: 'Groups/GroupsPage'
+  title: 'Groups/GroupsPage'
 } as Meta;
 
 interface Args {}
 
 export const Default: Story<Args> = args => {
-    return <GroupsPage {...args} />;
+  return <GroupsPage {...args} />;
 };
 
 Default.args = {};

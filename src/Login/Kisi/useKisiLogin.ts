@@ -4,17 +4,17 @@ import { loginKisi } from './client';
 import { testLoginInfo } from './testLoginInfo';
 
 export const useKisiLogin = () => {
-    const [logedIn, setLogedIn] = useState(false);
+  const [logedIn, setLogedIn] = useState(false);
 
-    useEffect(() => {
-        (async () => {
-            setLogedIn(false);
+  useEffect(() => {
+    (async () => {
+      setLogedIn(false);
 
-            await loginKisi(testLoginInfo);
+      await loginKisi(testLoginInfo);
 
-            setLogedIn(true);
-        })();
-    }, []);
+      setLogedIn(true);
+    })();
+  }, []);
 
-    return logedIn;
+  return logedIn;
 };

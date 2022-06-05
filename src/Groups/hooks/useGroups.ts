@@ -5,16 +5,17 @@ import { Group } from '../Groups.types';
 import { useAppApi } from '~/api';
 
 export const useGroups = () => {
-    const [groups, setGroups] = useState<Group[]>([]);
-    const { groupsApi } = useAppApi();
+  const [groups, setGroups] = useState<Group[]>([]);
 
-    useEffect(() => {
-        (async () => {
-            const newGroups = await groupsApi.getGroups();
+  const { groupsApi } = useAppApi();
 
-            setGroups(newGroups);
-        })();
-    }, []);
+  useEffect(() => {
+    (async () => {
+      const newGroups = await groupsApi.getGroups();
 
-    return groups;
+      setGroups(newGroups);
+    })();
+  }, []);
+
+  return groups;
 };

@@ -1,10 +1,10 @@
 export interface UserCredentials {
-    email: string;
-    password: string;
+  email: string;
+  password: string;
 }
 
 export interface LoginInfo extends UserCredentials {
-    domain: string;
+  domain: string;
 }
 
 export type LoginStatus = boolean;

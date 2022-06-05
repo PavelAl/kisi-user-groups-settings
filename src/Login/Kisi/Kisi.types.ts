@@ -1,5 +1,5 @@
 export interface KisiPagination {
-    offset: number;
-    limit: number;
-    count: number;
+  offset: number;
+  limit: number;
+  count: number;
 }

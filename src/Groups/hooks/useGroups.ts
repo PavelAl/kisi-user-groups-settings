@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { Group } from '../Groups.types';
+import { Group } from '../types';
 
 import { useAppApi } from '~/api';
 

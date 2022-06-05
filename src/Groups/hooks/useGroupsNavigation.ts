@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Group } from '../Groups.types';
+import { Group } from '../types';
 
 import { appUrls } from '~/services/urls';
 

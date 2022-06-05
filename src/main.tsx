@@ -4,8 +4,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
-import { AppApiProvider, kisiAppApi } from './api';
+import { AppApiProvider } from './api';
 import App from './App';
+import { kisiAppApi } from './Kisi';
+
 import './index.css';
 
 export const muiCache = createCache({

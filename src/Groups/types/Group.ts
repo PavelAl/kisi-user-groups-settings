@@ -1,7 +1,5 @@
-export interface Place {
-  id: number;
-  name: string;
-}
+import { PlaceShortInfo } from './InfoTypes';
+
 export interface Group {
   id: number; //The ID of the group
   name: string; //The name of the group
@@ -23,5 +21,5 @@ export interface Group {
   elevator_stops_count: number; // The number of elevator stops in the group
 
   place_id?: number; // The place ID of the group
-  place: Place;
+  place: PlaceShortInfo;
 }

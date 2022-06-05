@@ -1,6 +1,6 @@
 import GroupIcon from '@mui/icons-material/Group';
 
-import { Group } from '../Groups.types';
+import { Group } from '../types';
 
 import { ListOption } from '~/Lib/data-display/List/List.types';
 

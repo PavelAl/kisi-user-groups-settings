@@ -1,6 +1,6 @@
-import { Group } from '~/Groups/Groups.types';
+import { Group } from '~/Groups/types';
+import { KisiPagination } from '~/Kisi';
 import { kisiClient } from '~/Login';
-import { KisiPagination } from '~/Login/Kisi/Kisi.types';
 
 import { GroupsApi } from './GroupsApi';
 

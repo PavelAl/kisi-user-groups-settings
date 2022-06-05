@@ -1,4 +1,4 @@
-import { Group } from '~/Groups/Groups.types';
+import { Group } from '~/Groups/types';
 
 export interface GroupsPageProps {
   useGroups: () => Group[];

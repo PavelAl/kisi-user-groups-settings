@@ -1,55 +1,36 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { GroupLock } from '../types';
+import { GroupDetailsAsyncAction } from '../redux';
 
-import { useApi } from '~/api';
 import { Option } from '~/Lib/types';
 import { DoorLock } from '~/Locks/types';
+import { RootState } from '~/redux';
 
 export const useGroupDoorLocks = (groupId?: number) => {
-  const [locks, setLocks] = useState<DoorLock[]>([]);
-  const [groupLocks, setGroupLocks] = useState<GroupLock[]>([]);
-  const { groupLocksApi, doorsLocksApi } = useApi();
+  const locks = useSelector((state: RootState) => state.groupDetails.locks);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    (async () => {
-      if (!groupId) return;
-      const newGroupLocks = await groupLocksApi.getGroupLocks(groupId);
-      setGroupLocks(newGroupLocks);
-
-      const locksIds = newGroupLocks.map(lock => lock.lock.id);
-      const newLocks = await doorsLocksApi.getLocks(locksIds);
-
-      setLocks(newLocks);
-    })();
+    if (!groupId) return;
+    dispatch(GroupDetailsAsyncAction.getGroupLocks(groupId));
   }, [groupId]);
 
-  const unassignLock = useCallback(
-    async (unassignedLock?: DoorLock) => {
-      if (!unassignedLock) return;
-
-      const unassignedLockId = groupLocks.find(lock => lock.lock.id === unassignedLock.id)?.id;
-      await groupLocksApi.unassignGroupLock(unassignedLockId);
-
-      setLocks(prevLocks => prevLocks.filter(lock => lock.id !== unassignedLock.id));
-    },
-    [groupLocks]
-  );
-
   const assignLock = useCallback(
-    async (assignedLock?: Option) => {
+    (assignedLock?: Option) => {
       if (!groupId || !assignLock) return;
+      const lockId = Number(assignedLock?.key);
+      if (!lockId || isNaN(lockId)) return;
 
-      const newLock = await groupLocksApi.assignGroupLock(groupId, Number(assignedLock?.key));
-      const newGroupLocks = [...groupLocks, newLock];
-      setGroupLocks(newGroupLocks);
-
-      const locksIds = newGroupLocks.map(lock => lock.lock.id);
-      const newLocks = await doorsLocksApi.getLocks(locksIds);
-      setLocks(newLocks);
+      dispatch(GroupDetailsAsyncAction.assignLock(groupId, lockId));
     },
-    [groupLocks, groupId]
+    [groupId]
   );
+
+  const unassignLock = useCallback((unassignedLock?: DoorLock) => {
+    if (!unassignedLock) return;
+    dispatch(GroupDetailsAsyncAction.unassignLock(unassignedLock.id));
+  }, []);
 
   return { locks, assignLock, unassignLock };
 };

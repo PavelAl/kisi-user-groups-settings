@@ -14,7 +14,11 @@ export const useGroupDetailsPageStyles = makeStyles({
 
   header: {
     padding: theme.spacing(4),
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
+
+    '& > *:not(:last-child)': {
+      marginRight: theme.spacing(2)
+    }
   },
 
   content: {
@@ -29,18 +33,6 @@ export const useGroupDetailsPageStyles = makeStyles({
 
     '& > *:not(:last-child)': {
       marginBottom: theme.spacing(2)
-    }
-  },
-
-  addLock: {
-    height: 56,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: theme.spacing(0, 3),
-
-    '& > *:not(:last-child)': {
-      marginRight: theme.spacing(2)
     }
   }
 }));

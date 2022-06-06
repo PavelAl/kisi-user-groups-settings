@@ -1,6 +1,6 @@
 import { call, put } from 'redux-saga/effects';
 
-import { groupsActions } from '../groupsReducer';
+import { groupsActions } from '../slice';
 
 import { defaultAppApi } from '~/api';
 import { Group } from '~/Groups/types';

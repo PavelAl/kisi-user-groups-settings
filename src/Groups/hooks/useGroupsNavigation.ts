@@ -9,8 +9,12 @@ export const useGroupsNavigation = () => {
   const navigate = useNavigate();
 
   const navigateToGroup = useCallback((group?: Group) => {
-    navigate(`../${appUrls.groups}/${group?.id}`);
+    navigate(`/${appUrls.groups}/${group?.id}`);
   }, []);
 
-  return navigateToGroup;
+  const navigateToGroupsList = useCallback(() => {
+    navigate(`/${appUrls.groups}`);
+  }, []);
+
+  return { navigateToGroup, navigateToGroupsList };
 };

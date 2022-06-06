@@ -1,3 +1,3 @@
-import { groupsWatchers } from '~/Groups/redux/groups/sagas';
+import { groupLocksWatchers, groupsWatchers } from '~/Groups/redux';
 
-export const sagasWatchers = [...groupsWatchers];
+export const sagasWatchers = [...groupsWatchers, ...groupLocksWatchers];

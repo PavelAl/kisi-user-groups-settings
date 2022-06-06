@@ -1,8 +1,9 @@
-import { Paper, Typography } from '@mui/material';
+import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
+import { IconButton, Paper, Typography } from '@mui/material';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-import { useDoorLocksOptions, useGroup } from '~/Groups/hooks';
+import { useDoorLocksOptions, useGroup, useGroupsNavigation } from '~/Groups/hooks';
 import { useGroupDoorLocks } from '~/Groups/hooks/useGroupDoorLocks';
 import { DataList } from '~/Lib/DataDisplay/List/DataList/DataList';
 import { Page, PageContent, PageHeader } from '~/Lib/Layouts';
@@ -20,12 +21,17 @@ export const GroupDetailsPage: React.FC<GroupDetailsPageProps> = () => {
 
   const { locks: doorLocks, assignLock, unassignLock } = useGroupDoorLocks(groupId);
   const { lockOptions } = useDoorLocksOptions({ doorLocks, onLockUnassign: unassignLock });
+  const { navigateToGroupsList } = useGroupsNavigation();
 
   const { classes } = useGroupDetailsPageStyles();
 
   return (
     <Page className={classes.page}>
       <PageHeader className={classes.header}>
+        <IconButton onClick={navigateToGroupsList}>
+          <ArrowBackIcon />
+        </IconButton>
+
         <Typography variant="h5">{title}</Typography>
       </PageHeader>
 

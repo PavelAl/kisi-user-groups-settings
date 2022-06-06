@@ -10,7 +10,6 @@ export const useGroups = () => {
   const { groupsApi } = useApi();
 
   useEffect(() => {
-    console.log('calcGroups');
     (async () => {
       const newGroups = await groupsApi.getGroups();
 

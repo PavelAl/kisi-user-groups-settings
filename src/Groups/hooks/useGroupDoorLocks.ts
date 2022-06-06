@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { GroupLock } from '../types';
 
 import { useApi } from '~/api';
+import { Option } from '~/Lib/types';
 import { DoorLock } from '~/Locks/types';
 
 export const useGroupDoorLocks = (groupId?: number) => {
@@ -23,7 +24,7 @@ export const useGroupDoorLocks = (groupId?: number) => {
     })();
   }, [groupId]);
 
-  const handleLockUnassign = useCallback(
+  const unassignLock = useCallback(
     async (unassignedLock?: DoorLock) => {
       if (!unassignedLock) return;
 
@@ -35,5 +36,20 @@ export const useGroupDoorLocks = (groupId?: number) => {
     [groupLocks]
   );
 
-  return { locks, handleLockUnassign };
+  const assignLock = useCallback(
+    async (assignedLock?: Option) => {
+      if (!groupId || !assignLock) return;
+
+      const newLock = await groupLocksApi.assignGroupLock(groupId, Number(assignedLock?.key));
+      const newGroupLocks = [...groupLocks, newLock];
+      setGroupLocks(newGroupLocks);
+
+      const locksIds = newGroupLocks.map(lock => lock.lock.id);
+      const newLocks = await doorsLocksApi.getLocks(locksIds);
+      setLocks(newLocks);
+    },
+    [groupLocks, groupId]
+  );
+
+  return { locks, assignLock, unassignLock };
 };

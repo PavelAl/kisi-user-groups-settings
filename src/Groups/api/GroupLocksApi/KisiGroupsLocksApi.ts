@@ -16,6 +16,14 @@ export class KisiGroupLocksApi extends GroupLocksApi {
     return responce.data;
   };
 
+  assignGroupLock = async (groupId: number, lockId: number) => {
+    const postData = { group_lock: { group_id: groupId, lock_id: lockId } };
+
+    const data: GroupLock = await kisiClient.post('group_locks', postData);
+
+    return data;
+  };
+
   unassignGroupLock = async (groupLockId?: number) => {
     await kisiClient.delete(`group_locks/${groupLockId}`);
   };

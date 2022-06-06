@@ -17,7 +17,14 @@ const testDataListOptions: AutocompleteOption[] = createArrayOfValues(10, create
 }));
 
 export const Default: Story = () => {
-  return <SearchAutocomplete label={'Search movies'} options={testDataListOptions} />;
+  return (
+    <SearchAutocomplete
+      label={'Search movies'}
+      options={testDataListOptions}
+      onChange={console.log}
+      onInputChange={console.log}
+    />
+  );
 };
 
 Default.storyName = 'SearchAutocomplete';

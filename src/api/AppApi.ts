@@ -4,7 +4,9 @@ import { kisiAppApi } from '~/Kisi';
 
 import { AppApi } from './AppApi.types';
 
-export const AppApiContext = createContext<AppApi>(kisiAppApi);
+export const defaultAppApi = kisiAppApi;
+
+export const AppApiContext = createContext<AppApi>(defaultAppApi);
 
 export const AppApiProvider = AppApiContext.Provider;
 

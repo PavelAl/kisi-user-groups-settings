@@ -6,7 +6,7 @@ import { useGroups, useGroupsNavigation } from './Groups/hooks';
 import { GroupDetailsPage } from './Groups/pages/GroupDetailsPage';
 import { GroupsPage } from './Groups/pages/GroupsPage';
 import { useKisiLogin } from './Login';
-import { LoginContainer } from './Login/LoginContainer/LoginContainer';
+import { LoginContainer } from './Login/LoginContainer';
 import { appUrls } from './services';
 
 const GroupsPageContainer = () => <GroupsPage useGroups={useGroups} useGroupSelected={useGroupsNavigation} />;

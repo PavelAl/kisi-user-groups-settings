@@ -6,6 +6,7 @@ import { useDoorLocksOptions, useGroup } from '~/Groups/hooks';
 import { useGroupDoorLocks } from '~/Groups/hooks/useGroupDoorLocks';
 import { DataList } from '~/Lib/DataDisplay/List/DataList/DataList';
 import { Page, PageContent, PageHeader } from '~/Lib/Layouts';
+import { AddLock } from '~/Locks/components/AddLock';
 
 import { useGroupDetailsPageStyles } from './GroupDetailsPage.styles';
 import { GroupDetailsPageProps } from './GroupDetailsPage.types';
@@ -17,8 +18,8 @@ export const GroupDetailsPage: React.FC<GroupDetailsPageProps> = () => {
   const group = useGroup(groupId);
   const title = group ? `${group.name} doors` : '';
 
-  const { locks: doorLocks, handleLockUnassign } = useGroupDoorLocks(groupId);
-  const { lockOptions } = useDoorLocksOptions({ doorLocks, onLockUnassign: handleLockUnassign });
+  const { locks: doorLocks, assignLock, unassignLock } = useGroupDoorLocks(groupId);
+  const { lockOptions } = useDoorLocksOptions({ doorLocks, onLockUnassign: unassignLock });
 
   const { classes } = useGroupDetailsPageStyles();
 
@@ -28,8 +29,10 @@ export const GroupDetailsPage: React.FC<GroupDetailsPageProps> = () => {
         <Typography variant="h5">{title}</Typography>
       </PageHeader>
 
-      <PageContent>
-        <Paper className={classes.content} elevation={8}>
+      <PageContent className={classes.content}>
+        <Paper className={classes.paper} elevation={8}>
+          <AddLock excludedLocks={doorLocks} onAddLock={assignLock} />
+
           <DataList options={lockOptions} />
         </Paper>
       </PageContent>

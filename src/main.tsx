@@ -4,9 +4,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
-import { AppApiProvider } from './api';
+import { AppApiProvider, defaultAppApi } from './api';
 import App from './App';
-import { kisiAppApi } from './Kisi';
 
 import './index.css';
 
@@ -18,7 +17,7 @@ export const theme = createTheme();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
-    <AppApiProvider value={kisiAppApi}>
+    <AppApiProvider value={defaultAppApi}>
       <App />
     </AppApiProvider>
   </BrowserRouter>

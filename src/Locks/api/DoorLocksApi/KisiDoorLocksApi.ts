@@ -16,4 +16,10 @@ export class KisiDoorLocksApi extends DoorLocksApi {
 
     return responce.data;
   };
+
+  searchLocks = async (query: string): Promise<DoorLock[]> => {
+    const responce: GetResponce<DoorLock[]> = await kisiClient.get(`locks?query=${query}`);
+
+    return responce.data;
+  };
 }

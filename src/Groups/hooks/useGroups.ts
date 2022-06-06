@@ -2,14 +2,15 @@ import { useEffect, useState } from 'react';
 
 import { Group } from '../types';
 
-import { useAppApi } from '~/api';
+import { useApi } from '~/api';
 
 export const useGroups = () => {
   const [groups, setGroups] = useState<Group[]>([]);
 
-  const { groupsApi } = useAppApi();
+  const { groupsApi } = useApi();
 
   useEffect(() => {
+    console.log('calcGroups');
     (async () => {
       const newGroups = await groupsApi.getGroups();
 

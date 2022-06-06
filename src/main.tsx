@@ -17,11 +17,9 @@ export const muiCache = createCache({
 export const theme = createTheme();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <AppApiProvider value={kisiAppApi}>
-        <App />
-      </AppApiProvider>
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+    <AppApiProvider value={kisiAppApi}>
+      <App />
+    </AppApiProvider>
+  </BrowserRouter>
 );

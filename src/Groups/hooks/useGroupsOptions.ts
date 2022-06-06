@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react';
 
-import { groupToListOption } from '../mappers/groupToListOption';
+import { groupToListOption } from '../mappers';
 import { Group } from '../types';
 
 import { ListOption } from '~/Lib/data-display/List/List.types';

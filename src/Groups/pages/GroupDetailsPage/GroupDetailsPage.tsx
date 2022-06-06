@@ -1,9 +1,18 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
+
+import { useDoorLocksOptions } from '~/Groups/hooks';
+import { useGroupDoorLocks } from '~/Groups/hooks/useGroupDoorLocks';
+import { DataList } from '~/Lib/data-display/List/DataList/DataList';
 
 import { GroupDetailsPageProps } from './GroupDetailsPage.types';
 
-export const GroupDetailsPage: React.FC<GroupDetailsPageProps> = props => {
-  const {} = props;
+export const GroupDetailsPage: React.FC<GroupDetailsPageProps> = () => {
+  const params = useParams();
+  const groupId = params ? Number(params.id) : undefined;
 
-  return <div>Group details</div>;
+  const doorLocks = useGroupDoorLocks(groupId);
+  const { lockOptions } = useDoorLocksOptions({ doorLocks });
+
+  return <DataList options={lockOptions} />;
 };

@@ -1,7 +1,7 @@
 import { makeStyles } from 'tss-react/mui';
 
-export const useGroupsPageStyles = makeStyles({
-  name: 'GroupsPage'
+export const useGroupDetailsPageStyles = makeStyles({
+  name: 'GroupDetailsPage'
 })(theme => ({
   page: {
     paddingBottom: theme.spacing(2),

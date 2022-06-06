@@ -1,2 +1,2 @@
 export * from './GroupLocksApi';
-export * from './KisiGroupsApi';
+export * from './KisiGroupsLocksApi';

@@ -2,7 +2,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import SensorDoorIcon from '@mui/icons-material/SensorDoor';
 import { IconButton } from '@mui/material';
 
-import { ListOption } from '~/Lib/data-display/List/List.types';
+import { ListOption } from '~/Lib/DataDisplay/List/List.types';
 import { DoorLock } from '~/Locks/types';
 
 export function doorLockToListOption(lock: DoorLock, onUnassign?: () => void): ListOption {

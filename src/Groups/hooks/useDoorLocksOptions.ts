@@ -2,7 +2,7 @@ import { useCallback, useMemo } from 'react';
 
 import { doorLockToListOption } from '../mappers';
 
-import { ListOption } from '~/Lib/data-display/List/List.types';
+import { ListOption } from '~/Lib/DataDisplay/List/List.types';
 import { DoorLock } from '~/Locks/types';
 
 interface Args {

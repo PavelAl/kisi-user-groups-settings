@@ -3,7 +3,7 @@ import { useCallback, useMemo } from 'react';
 import { groupToListOption } from '../mappers';
 import { Group } from '../types';
 
-import { ListOption } from '~/Lib/data-display/List/List.types';
+import { ListOption } from '~/Lib/DataDisplay/List/List.types';
 
 interface Args {
   groups: Group[];

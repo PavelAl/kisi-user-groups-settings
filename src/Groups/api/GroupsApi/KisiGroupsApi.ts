@@ -10,9 +10,15 @@ export interface GetResponce<DataType> {
 }
 
 export class KisiGroupsApi extends GroupsApi {
-  public getGroups = async (): Promise<Group[]> => {
+  getGroups = async (): Promise<Group[]> => {
     const responce: GetResponce<Group[]> = await kisiClient.get('groups');
 
     return responce.data;
+  };
+
+  getGroup = async (groupId: number): Promise<Group | undefined> => {
+    const responce: GetResponce<Group[]> = await kisiClient.get(`groups?ids=${groupId}`);
+
+    return responce.data[0];
   };
 }

@@ -15,7 +15,7 @@ export const NavigationList: React.FC<NavigationListProps> = props => {
   });
 
   return (
-    <List {...listProps} onClick={handleItemClicked}>
+    <List {...listProps} disablePadding onClick={handleItemClicked}>
       {options.map(option => (
         <NavigationListItem key={option.key} data-option-key={option.key} option={option} />
       ))}

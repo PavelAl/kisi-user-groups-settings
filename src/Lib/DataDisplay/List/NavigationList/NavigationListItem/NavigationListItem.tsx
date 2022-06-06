@@ -3,20 +3,18 @@ import { forwardRef } from 'react';
 
 import { ListItemContent } from '../../ListItemContent';
 
+import { useNavigationListItemStyles } from './NavigationListItem.styles';
 import { NavigationListItemProps } from './NavigationListItem.types';
 
 export const NavigationListItem = forwardRef<HTMLLIElement, NavigationListItemProps>((props, ref) => {
-  const { option, ...listItemProps } = props;
+  const { option, className, ...listItemProps } = props;
   const { secondaryElement } = option;
 
+  const { classes } = useNavigationListItemStyles();
+
   return (
-    <ListItem
-      secondaryAction={secondaryElement}
-      disablePadding={Boolean(secondaryElement)}
-      {...listItemProps}
-      ref={ref as any}
-    >
-      <ListItemButton>
+    <ListItem disablePadding {...listItemProps} ref={ref as any} secondaryAction={secondaryElement}>
+      <ListItemButton className={classes.button}>
         <ListItemContent {...option} />
       </ListItemButton>
     </ListItem>

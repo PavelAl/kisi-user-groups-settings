@@ -2,7 +2,7 @@ import GroupIcon from '@mui/icons-material/Group';
 
 import { Group } from '../types';
 
-import { ListOption } from '~/Lib/data-display/List/List.types';
+import { ListOption } from '~/Lib/DataDisplay/List/List.types';
 
 export function groupToListOption(group: Group): ListOption {
   return {

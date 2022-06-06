@@ -6,10 +6,10 @@ import { DataListItem } from '../DataListItem';
 import { DataListProps } from './DataList.types';
 
 export const DataList: React.FC<DataListProps> = props => {
-  const { options = [] } = props;
+  const { options = [], ...listProps } = props;
 
   return (
-    <List {...props}>
+    <List disablePadding {...listProps}>
       {options.map(option => (
         <DataListItem key={option.key} option={option} />
       ))}

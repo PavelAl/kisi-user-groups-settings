@@ -11,8 +11,8 @@ export const GroupDetailsPage: React.FC<GroupDetailsPageProps> = () => {
   const params = useParams();
   const groupId = params ? Number(params.id) : undefined;
 
-  const doorLocks = useGroupDoorLocks(groupId);
-  const { lockOptions } = useDoorLocksOptions({ doorLocks });
+  const { locks: doorLocks, handleLockUnassign } = useGroupDoorLocks(groupId);
+  const { lockOptions } = useDoorLocksOptions({ doorLocks, onLockUnassign: handleLockUnassign });
 
   return <DataList options={lockOptions} />;
 };

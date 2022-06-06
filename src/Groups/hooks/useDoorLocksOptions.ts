@@ -7,22 +7,29 @@ import { DoorLock } from '~/Locks/types';
 
 interface Args {
   doorLocks?: DoorLock[];
-  onLockSelected?: (lock?: DoorLock) => void;
+  onLockUnassign?: (lock?: DoorLock) => void;
 }
 
-export function useDoorLocksOptions({ doorLocks = [], onLockSelected }: Args) {
-  const lockOptions = useMemo(() => doorLocks.map(doorLockToListOption), [doorLocks]);
+export function useDoorLocksOptions({ doorLocks = [], onLockUnassign }: Args) {
+  const lockOptions = useMemo(
+    () =>
+      doorLocks.map(lock => {
+        const onUnassign = onLockUnassign ? () => onLockUnassign(lock) : undefined;
+        return doorLockToListOption(lock, onUnassign);
+      }),
+    [doorLocks]
+  );
 
-  const handleGroupSelect = useCallback(
+  const handleLockUnassign = useCallback(
     (lockOption?: ListOption) => {
       if (!lockOption) return;
 
       const selectedGroup = doorLocks.find(lock => lock.id === Number(lockOption.key));
 
-      if (onLockSelected) onLockSelected(selectedGroup);
+      if (onLockUnassign) onLockUnassign(selectedGroup);
     },
-    [doorLocks, onLockSelected]
+    [doorLocks, onLockUnassign]
   );
 
-  return { lockOptions, handleGroupSelect };
+  return { lockOptions, handleLockUnassign };
 }

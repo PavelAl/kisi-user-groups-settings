@@ -15,4 +15,8 @@ export class KisiGroupLocksApi extends GroupLocksApi {
 
     return responce.data;
   };
+
+  unassignGroupLock = async (groupLockId?: number) => {
+    await kisiClient.delete(`group_locks/${groupLockId}`);
+  };
 }

@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { Group } from '../types';
 
-import { fetchGroups } from './groupsThunks';
+// import { fetchGroups } from './groupsThunks';
 
 export interface GroupsState {
   groups: Group[];
@@ -19,12 +19,12 @@ export const groupsSlice = createSlice({
     setGroups: (state, action: PayloadAction<Group[]>) => {
       state.groups = action.payload;
     }
-  },
-  extraReducers: builder => {
-    builder.addCase(fetchGroups.fulfilled, (state, action) => {
-      state.groups = action.payload;
-    });
   }
+  // extraReducers: builder => {
+  //   builder.addCase(fetchGroups.fulfilled, (state, action) => {
+  //     state.groups = action.payload;
+  //   });
+  // }
 });
 
 export const groupsActions = groupsSlice.actions;

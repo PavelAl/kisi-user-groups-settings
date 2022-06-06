@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { fetchGroups } from '../redux';
+import { getGroups } from '../redux';
 
 import { RootState, useAppDispatch, useAppSelector } from '~/redux/store';
 
@@ -10,7 +10,7 @@ export const useGroups = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchGroups());
+    dispatch(getGroups());
   }, []);
 
   return groups;

@@ -1,15 +1,21 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import thunkMiddleware from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
 
 import { groupsReducer } from '~/Groups/redux/groupsReducer';
+
+import { sagasWatchers } from './sagasWatchers';
+
+const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
   reducer: {
     groups: groupsReducer
   },
-  middleware: [thunkMiddleware]
+  middleware: [sagaMiddleware]
 });
+
+sagasWatchers.forEach(sagaMiddleware.run);
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

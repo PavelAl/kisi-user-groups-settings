@@ -1,2 +1,1 @@
-export * from './groupsReducer';
-export * from './groupsThunks';
+export * from './groups';

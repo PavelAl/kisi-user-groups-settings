@@ -12,7 +12,7 @@ import { appUrls } from './services';
 const GroupsPageContainer = () => <GroupsPage useGroups={useGroups} useGroupSelected={useGroupsNavigation} />;
 const GroupDetailsPageContainer = () => <GroupDetailsPage />;
 
-const App: FC<AppProps> = () => {
+export const App: FC<AppProps> = () => {
   return (
     <LoginContainer loginHook={useKisiLogin}>
       <Routes>
@@ -25,5 +25,3 @@ const App: FC<AppProps> = () => {
     </LoginContainer>
   );
 };
-
-export default App;

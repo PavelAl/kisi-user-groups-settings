@@ -1,20 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
-import { Group } from '../types';
+import { fetchGroups } from '../redux';
 
-import { useApi } from '~/api';
+import { RootState, useAppDispatch, useAppSelector } from '~/redux/store';
 
 export const useGroups = () => {
-  const [groups, setGroups] = useState<Group[]>([]);
+  const groups = useAppSelector((state: RootState) => state.groups.groups);
 
-  const { groupsApi } = useApi();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    (async () => {
-      const newGroups = await groupsApi.getGroups();
-
-      setGroups(newGroups);
-    })();
+    dispatch(fetchGroups());
   }, []);
 
   return groups;

@@ -1,6 +1,6 @@
-import { ListOption } from '../List.types';
+import { Option } from '~/Lib/types';
 
-export function createTestListOption(index?: number): ListOption {
+export function createTestOption(index?: number): Option {
   return {
     key: `test-option-${index ?? ''}`,
     label: `Test Option ${index ?? ''}`,

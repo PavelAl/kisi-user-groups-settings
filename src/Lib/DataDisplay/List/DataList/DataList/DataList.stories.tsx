@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/react';
 import React, { useMemo } from 'react';
 
-import { createTestListOption, configOption } from '../../storybook';
+import { createTestOption, configOption } from '../../storybook';
 
 import { createArrayOfValues } from '~/storybook';
 
@@ -16,7 +16,7 @@ interface Args {
   withSecondaryElement: boolean;
 }
 
-const testDataListOptions = createArrayOfValues(10, createTestListOption);
+const testDataListOptions = createArrayOfValues(10, createTestOption);
 
 const DataListStory: React.FC<Args> = ({ withIcons, withSecondaryElement }) => {
   const options = useMemo(() => {

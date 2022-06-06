@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react';
 import { useMemo } from 'react';
 
 import { ListOption } from '../../List.types';
-import { createTestListOption, configOption } from '../../storybook';
+import { createTestOption, configOption } from '../../storybook';
 
 import { DataListItem } from './DataListItem';
 export default {
@@ -14,7 +14,7 @@ interface Args {
   withSecondaryElement: boolean;
 }
 
-const testOption: ListOption = createTestListOption(0);
+const testOption: ListOption = createTestOption(0);
 
 const DataListItemStory = ({ withIcon, withSecondaryElement }: Args) => {
   const option = useMemo(
